@@ -1,5 +1,8 @@
 package com.tutorial.proyect1_sells;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestSells {
 
     public static void main(String[] args) {
@@ -13,11 +16,21 @@ public class TestSells {
         OrderItem item3 = new OrderItem(product3, 4);
         OrderItem item4 = new OrderItem(product4, 2);
 
-        OrderItem[] items = {item1, item2, item3, item4};
+        List<OrderItem> items = new ArrayList<>();
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+        items.add(item4);
         Order myOrder = new Order(items);
         System.out.println(myOrder.toString());
         myOrder.addOrderItem(product2, 4);
         System.out.println(myOrder.toString());
 
+        myOrder.updateOrderItem(product4.getProductId(), true);
+        myOrder.updateOrderItem(product1.getProductId(), false);
+        System.out.println(myOrder.toString());
+
+        myOrder.removeOrderItem(product2.getProductId());
+        System.out.println(myOrder.toString());
     }
 }
